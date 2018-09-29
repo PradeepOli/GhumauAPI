@@ -1,0 +1,25 @@
+{
+  "name": "ghumau",
+  "version": "1.0.0",
+  "description": "Ghumau nepal api",
+  "main": "server.js",
+  "engines": {
+    "node": "8.11.2"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "exploringpratik",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "express-async-errors": "^3.0.0",
+    "mongoose": "^5.3.0",
+    "mongoose-mongodb-errors": "0.0.2",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.18.4"
+  }
+}
