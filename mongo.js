@@ -4,4 +4,4 @@ const mongoDBErrors = require("mongoose-mongodb-errors");
 
 mongoose.Promise = global.Promise;
 mongoose.plugin(mongoDBErrors);
-mongoose.connect('process.env.MONGOURI');
+mongoose.connect(process.env.MONGOURI,{ useNewUrlParser: true });
