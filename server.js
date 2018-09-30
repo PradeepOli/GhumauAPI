@@ -48,6 +48,6 @@ app.use((error, req, res, next) => {
 });
 const port = process.env.PORT || 3001;
 
-app.listen(3001, function() {
+app.listen(port, function() {
   console.log(`Server is running on port ${port}`);
 });
