@@ -41,7 +41,7 @@ router.use((req, res, next) =>{
   }
 });
 
-
+//For sorting on the basic of parameter like name, altitude, id, etc
 router.get("/", async (req, res) => {
   const places = await Place.find({}).sort('name');
   res.send(places);
@@ -53,7 +53,7 @@ router.get("/sort/:id", async (req, res) => {
 });
 
 router.get("/:placeId", async (req, res) => {
-  const place = await Place.find({ _id: req.params.placeId }).populate(
+  const place = await Place.findOne({ _id: req.params.placeId }).populate(
     "descriptions"
   );
   res.send(place);
@@ -116,7 +116,7 @@ router.post("/:placeId/description", async (req, res) => {
 
 //Read a Description
 router.get("/:placeId/description", async (req, res) => {
-  const place = await Place.find({ _id: req.params.placeId }).populate(
+  const place = await Place.findOne({ _id: req.params.placeId }).populate(
     "descriptions"
   );
   res.send(place);

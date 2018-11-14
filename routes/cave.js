@@ -48,7 +48,7 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/:placeId", async (req, res) => {
-  const place = await Place.find({ _id: req.params.placeId }).populate(
+  const place = await Place.findOne({ _id: req.params.placeId }).populate(
     "descriptions"
   );
   res.send(place);
@@ -111,7 +111,7 @@ router.post("/:placeId/description", async (req, res) => {
 
 //Read a Description
 router.get("/:placeId/description", async (req, res) => {
-  const place = await Place.find({ _id: req.params.placeId }).populate(
+  const place = await Place.findOne({ _id: req.params.placeId }).populate(
     "descriptions"
   );
   res.send(place);
