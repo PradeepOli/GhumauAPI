@@ -23,7 +23,8 @@ router.use((req, res, next) =>{
     // verifies secret and checks if the token is expired
     jwt.verify(token, app.get('Secret'), (err, decoded) =>{      
       if (err) {
-        return res.json({ message: 'invalid token' });    
+        console.log("Invalid Token");
+        //return res.json({ message: 'invalid token' });    
       } else {
         // if everything is good, save to request for use in other routes
         req.decoded = decoded;    
@@ -31,15 +32,12 @@ router.use((req, res, next) =>{
       }
     });
 
-  } else {
+   }
+   else {
 
     // if there is no token  
 
-    res.send({ 
-
-        message: 'No token provided.' 
-    });
-
+    console.log("Token is required")
   }
 });
 
