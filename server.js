@@ -5,22 +5,80 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 
+
+const jwt    = require('jsonwebtoken'),
+config = require('./configurations/config');
+
 //database connection
 require("./mongo");
 
-//Models
+//Models or Schema
 require("./model/Temple");
 require("./model/Trekking");
 require("./model/Cave");
 
-
 //Middleware
 app.use(bodyParser.json()).use(morgan());
+
 
 //Routes
 app.use('/api/temples',require("./routes/temple"));
 app.use('/api/trekking',require("./routes/trekking"));
 app.use('/api/caves',require("./routes/cave"));
+
+
+//set secret
+app.set('Secret', config.secret);
+
+// use morgan to log requests to the console
+app.use(morgan('dev'));
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// parse application/json
+app.use(bodyParser.json());
+
+
+
+app.post('/authenticate',(req,res)=>{
+
+  if(req.body.username==="aymen"){
+
+      if(req.body.password===123){
+           //if eveything is okey let's create our token 
+
+      const payload = {
+
+          check:  true
+
+        };
+
+        var token = jwt.sign(payload, app.get('Secret'), {
+          //  expiresIn: 1440 // expires in 24 hours
+
+        });
+       // console.log(token);
+
+
+        res.json({
+          message: 'authentication done ',
+          token: token
+        });
+
+      }else{
+          res.json({message:"please check your password !"})
+      }
+
+  }else{
+
+      res.json({message:"user not found !"})
+
+  }
+
+})
+
+
 
 
 //Not Found Route

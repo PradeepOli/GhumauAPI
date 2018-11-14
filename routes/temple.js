@@ -1,8 +1,49 @@
+const express = require("express");
+const app = express();
+const jwt    = require('jsonwebtoken');
+const config = require('../configurations/config')
+
 const router = require("express").Router();
 const mongoose = require("mongoose");
 
 const Place = mongoose.model("TemplePlace");
 const Description = mongoose.model("TempleDescription");
+
+
+app.set('Secret', config.secret);
+
+router.use((req, res, next) =>{
+
+
+  // check header for the token
+  var token = req.headers['access-token'];
+
+  // decode token
+  if (token) {
+
+    // verifies secret and checks if the token is expired
+    jwt.verify(token, app.get('Secret'), (err, decoded) =>{      
+      if (err) {
+        return res.json({ message: 'invalid token' });    
+      } else {
+        // if everything is good, save to request for use in other routes
+        req.decoded = decoded;    
+        next();
+      }
+    });
+
+  } else {
+
+    // if there is no token  
+
+    res.send({ 
+
+        message: 'No token provided.' 
+    });
+
+  }
+});
+
 
 router.get("/", async (req, res) => {
   const places = await Place.find().sort('-name');
