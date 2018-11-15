@@ -13,18 +13,15 @@ config = require('./configurations/config');
 require("./mongo");
 
 //Models or Schema
-require("./model/Temple");
-require("./model/Trekking");
-require("./model/Cave");
+require("./model/AllList");
+
 
 //Middleware
 app.use(bodyParser.json()).use(morgan());
 
 
 //Routes
-app.use('/api/temples',require("./routes/temple"));
-app.use('/api/trekking',require("./routes/trekking"));
-app.use('/api/caves',require("./routes/cave"));
+app.use('/api',require("./routes/AllList"));
 
 
 //set secret
@@ -41,42 +38,6 @@ app.use(bodyParser.json());
 
 
 
-app.post('/authenticate',(req,res)=>{
-
-  if(req.body.username==="aymen"){
-
-      if(req.body.password===123){
-           //if eveything is okey let's create our token 
-
-      const payload = {
-
-          check:  true
-
-        };
-
-        var token = jwt.sign(payload, app.get('Secret'), {
-          //  expiresIn: 1440 // expires in 24 hours
-
-        });
-       // console.log(token);
-
-
-        res.json({
-          message: 'authentication done ',
-          token: token
-        });
-
-      }else{
-          res.json({message:"please check your password !"})
-      }
-
-  }else{
-
-      res.json({message:"user not found !"})
-
-  }
-
-})
 
 
 
