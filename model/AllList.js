@@ -28,11 +28,11 @@ const all_list_schema = new mongoose.Schema(
     },
 
     latitude: {
-      type: String,
+      type: Number,
       required: "Latitude is Required"
     },
     longitude: {
-      type: String,
+      type: Number,
       required: "Longitude is Required"
     },
     rating: {
