@@ -97,7 +97,7 @@ router.post("/", async (req, res) => {
   place.altitude = req.body.altitude;
   place.categoriesSpecial = req.body.categoriesSpecial;
   place.rating = req.body.rating;
-  place.views = req.body.view;await place.save();
+  place.views = req.body.views;await place.save();
   res.send(place);
 });
 
