@@ -39,7 +39,7 @@ const all_list_schema = new mongoose.Schema(
       type: Number,
       required: "Rating is Required"
     },
-    view: {
+    views: {
       type: Number,
       required: "Views is Required"
     },
