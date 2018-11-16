@@ -62,7 +62,7 @@ router.get("/category/:categoryname", async(req,res)=>{
   res.send(places);
 })
 
-router.put("updateplace/:placeId", async (req, res) => {
+router.put("/updateplace/:placeId", async (req, res) => {
   const place = await Place.findByIdAndUpdate(
     {
       _id: req.params.placeId
@@ -77,7 +77,7 @@ router.put("updateplace/:placeId", async (req, res) => {
   res.send(place);
 });
 
-router.delete("deleteplace/:placeId", async (req, res) => {
+router.delete("/deleteplace/:placeId", async (req, res) => {
   const place = await Place.findByIdAndRemove({
     _id: req.params.placeId
   });
