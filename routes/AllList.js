@@ -42,7 +42,7 @@ router.use((req, res, next) =>{
 
 
 router.get("/", async (req, res) => {
-  const places = await Place.find({}).sort('name');
+  const places = await Place.find({});
   res.send(places);
 });
 
