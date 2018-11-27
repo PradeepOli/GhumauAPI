@@ -58,7 +58,7 @@ router.get("/:placeId", async (req, res) => {
   res.send(place);
 });
 router.get("/category/:categoryname", async(req,res)=>{
-  const places = await Place.find({category:req.params.categoryname});
+  const places = await Place.find({physical_location:req.params.categoryname});
   res.send(places);
 })
 
@@ -88,16 +88,14 @@ router.post("/", async (req, res) => {
   const place = new Place();
   place.category = req.body.category;
   place.name = req.body.name;
-  place.state = req.body.state;
-  place.district = req.body.district;
-  place.city = req.body.city;
-  place.streetAddress = req.body.streetAddress;
-  place.latitude = req.body.latitude;
-  place.longitude = req.body.longitude;
-  place.altitude = req.body.altitude;
+  place.physical_location = req.body.physical_location;
+  place.way_to_destination = req.body.way_to_destination;
+  place.geo_location = req.body.geo_location;
   place.categoriesSpecial = req.body.categoriesSpecial;
   place.rating = req.body.rating;
-  place.views = req.body.views;await place.save();
+  place.views = req.body.views;
+  place.geo_location = req.body.geo_location;
+  await place.save();
   res.send(place);
 });
 
@@ -110,7 +108,6 @@ router.post("/:placeId", async (req, res) => {
 
   //Create a Description
   const description = new Description();
-  description.qns = req.body.qns;
   description.ans = req.body.ans;
   description.place = place._id;
   await description.save();
