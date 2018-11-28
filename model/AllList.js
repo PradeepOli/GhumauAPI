@@ -13,7 +13,7 @@ const all_list_schema = new mongoose.Schema(
     physical_location:[{
       
       type: String,
-      required:"location array is required"
+      default: null
     }],
 
     geo_location: [{
@@ -23,21 +23,16 @@ const all_list_schema = new mongoose.Schema(
   
     rating: {
       type: Number,
-      required: "Rating is Required"
+default: null
     },
     views: {
       type: Number,
-      required: "Views is Required"
+      default: null
     },
     categoriesSpecial:{
       type: String,
-      required:"Categories Special is Required"
+      default: null
     },
-    way_to_destination:{
-      type: String,
-      required:"Way to destination is Required"
-    },    
-    
     descriptions: [
       {
         type: mongoose.Schema.Types.ObjectId,

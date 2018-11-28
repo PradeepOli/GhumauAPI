@@ -89,12 +89,10 @@ router.post("/", async (req, res) => {
   place.category = req.body.category;
   place.name = req.body.name;
   place.physical_location = req.body.physical_location;
-  place.way_to_destination = req.body.way_to_destination;
   place.geo_location = req.body.geo_location;
   place.categoriesSpecial = req.body.categoriesSpecial;
   place.rating = req.body.rating;
   place.views = req.body.views;
-  place.geo_location = req.body.geo_location;
   await place.save();
   res.send(place);
 });
