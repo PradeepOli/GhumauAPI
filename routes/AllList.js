@@ -58,7 +58,7 @@ router.get("/:placeId", async (req, res) => {
   res.send(place);
 });
 router.get("/category/:categoryname", async(req,res)=>{
-  const places = await Place.find({physical_location:req.params.categoryname});
+  const places = await Place.find({category:req.params.categoryname});
   res.send(places);
 })
 
