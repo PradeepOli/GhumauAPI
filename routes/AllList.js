@@ -106,6 +106,7 @@ router.post("/:placeId", async (req, res) => {
 
   //Create a Description
   const description = new Description();
+  description.qns = req.body.qns;
   description.ans = req.body.ans;
   description.place = place._id;
   await description.save();
