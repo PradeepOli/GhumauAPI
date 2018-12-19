@@ -20,10 +20,17 @@ const all_list_schema = new mongoose.Schema(
       type: Number,
       required: "Latitude is Required"
     }],
-  
+  province_no:{
+    type: String,
+    required:"Province Number is Required"
+  },
     rating: {
       type: Number,
-default: null
+      default: null
+    },
+    rating_total:{
+      type: Number,
+      default: null
     },
     views: {
       type: Number,
@@ -54,6 +61,10 @@ const description_schema = new mongoose.Schema({
     ans: {
     type: String,
     required: "Answer is Required"
+  },
+  rank:{
+    type: Number,
+    default: null
   },
  
   place: {

@@ -60,6 +60,11 @@ router.get("/:placeId", async (req, res) => {
 router.get("/category/:categoryname", async(req,res)=>{
   const places = await Place.find({category:req.params.categoryname});
   res.send(places);
+});
+
+router.get("/place/:placename", async(req,res)=>{
+  const places = await Place.find({physical_location:req.params.placename});
+  res.send(places);
 })
 
 router.put("/updateplace/:placeId", async (req, res) => {
@@ -90,9 +95,11 @@ router.post("/", async (req, res) => {
   place.name = req.body.name;
   place.physical_location = req.body.physical_location;
   place.geo_location = req.body.geo_location;
+  place.province_no = req.body.province_no;
   place.categoriesSpecial = req.body.categoriesSpecial;
   place.rating = req.body.rating;
   place.views = req.body.views;
+  place.rating_total = req.body.rating_total;
   await place.save();
   res.send(place);
 });
@@ -108,6 +115,7 @@ router.post("/:placeId", async (req, res) => {
   const description = new Description();
   description.qns = req.body.qns;
   description.ans = req.body.ans;
+  description.rank = req.body.rank;
   description.place = place._id;
   await description.save();
 

@@ -36,12 +36,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // parse application/json
 app.use(bodyParser.json());
 
-
-
-
-
-
-
 //Not Found Route
 app.use((req, res, next) => {
   req.status = 404;
