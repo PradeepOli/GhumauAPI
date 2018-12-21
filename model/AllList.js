@@ -18,11 +18,11 @@ const all_list_schema = new mongoose.Schema(
 
     geo_location: [{
       type: Number,
-      required: "Latitude is Required"
+      default: null
     }],
   province_no:{
     type: String,
-    required:"Province Number is Required"
+    default: null
   },
     rating: {
       type: Number,
@@ -36,10 +36,10 @@ const all_list_schema = new mongoose.Schema(
       type: Number,
       default: null
     },
-    categoriesSpecial:{
+    categoriesSpecial:[{
       type: String,
       default: null
-    },
+    }],
     descriptions: [
       {
         type: mongoose.Schema.Types.ObjectId,
