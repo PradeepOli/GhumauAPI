@@ -61,6 +61,10 @@ router.get("/category/:categoryname", async(req,res)=>{
   const places = await Place.find({category:req.params.categoryname});
   res.send(places);
 });
+router.get("/category/:categoryname/location/:name", async(req,res)=>{
+  const places = await Place.find({category:req.params.categoryname,physical_location:req.params.name});
+  res.send(places);
+});
 
 router.get("/place/:placename", async(req,res)=>{
   const places = await Place.find({physical_location:req.params.placename});
