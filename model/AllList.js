@@ -36,6 +36,10 @@ const all_list_schema = new mongoose.Schema(
       type: Number,
       default: null
     },
+    number_of_images: {
+      type: Number,
+      default: 1
+    },
     categoriesSpecial:[{
       type: String,
       default: null
