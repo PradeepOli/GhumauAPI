@@ -104,6 +104,8 @@ router.post("/", async (req, res) => {
   place.rating = req.body.rating;
   place.views = req.body.views;
   place.rating_total = req.body.rating_total;
+  place.number_of_images = req.body.number_of_images;
+  place.pic_credit = req.body.pic_credit;
   await place.save();
   res.send(place);
 });
