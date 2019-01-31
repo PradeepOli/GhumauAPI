@@ -45,7 +45,7 @@ router.use((req, res, next) =>{
   });
 
   router.get("/placeID/:placeID", async(req,res)=>{
-    const rating = await Rating.find({category:req.params.placeID});
+    const rating = await Rating.find({placeID:req.params.placeID});
     res.send(rating);
   });
   

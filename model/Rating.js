@@ -3,8 +3,8 @@ const mongoose = require("mongoose");
 const rating_schema = new mongoose.Schema(
     {
       rating: {
-        type: String,
-        required: "Rating is Required"
+        type: Number,
+        default: 0
       },
       review: {
         type: String,
