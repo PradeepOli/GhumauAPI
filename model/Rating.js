@@ -30,6 +30,13 @@ const rating_schema = new mongoose.Schema(
         type: String,
         required: "UserID is Required"
       },
+      liked:[{
+        type: String
+        }],
+        date:{
+          type: String,
+          default:""
+        }
     },
       {
         timestamps: true
