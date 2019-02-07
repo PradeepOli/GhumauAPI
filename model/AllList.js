@@ -48,6 +48,12 @@ const all_list_schema = new mongoose.Schema(
     type: String,
     default:""
     }],
+
+    youtube_playList:{
+    type: String,
+    default:""  
+    },
+
     descriptions: [
       {
         type: mongoose.Schema.Types.ObjectId,
