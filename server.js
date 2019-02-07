@@ -14,7 +14,8 @@ require("./mongo");
 
 //Models or Schema
 require("./model/AllList");
-require("./model/Rating")
+require("./model/Rating");
+require("./model/Booking");
 
 //Middleware
 app.use(bodyParser.json()).use(morgan());
@@ -23,6 +24,7 @@ app.use(bodyParser.json()).use(morgan());
 //Routes
 app.use('/api',require("./routes/AllList"));
 app.use('/rating',require("./routes/Rating"));
+app.use('/booking',require("./routes/Booking"));
 
 //set secret
 app.set('Secret', config.secret);
