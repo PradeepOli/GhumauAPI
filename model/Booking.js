@@ -33,6 +33,10 @@ const booking_schema = new mongoose.Schema(
         type: String,
         default: false
       },
+      remaining_room:{
+        type: Number,
+        default: 1
+      },
 
        geo_location:[{
         type: Number,

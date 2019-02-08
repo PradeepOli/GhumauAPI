@@ -5,7 +5,7 @@ const config = require('../configurations/config')
 const router = require("express").Router();
 const mongoose = require("mongoose");
 
-const Booking = mongoose.model("Booking");
+const Booked = mongoose.model("Booked");
 
 app.set('Secret', config.secret);
 
@@ -40,40 +40,37 @@ router.use((req, res, next) =>{
   });
   
   router.get("/", async (req, res) => {
-    const booking = await Booking.find({});
-    res.send(booking);
+    const booked = await Booked.find({});
+    res.send(booked);
   });
 
-  router.get("/category/:categoryname", async(req,res)=>{
-    const booking = await Booking.find({category:req.params.categoryname});
-    res.send(booking);
+  router.get("/hotelID/:hotelID", async(req,res)=>{
+    const booked = await Booked.find({category:req.params.categoryname});
+    res.send(booked);
   });
 
   router.post("/", async (req, res) => {
-    const booking = new Booking();
-    booking.name = req.body.name;
-    booking.price = req.body.price;
-    booking.geo_location = req.body.geo_location;
-    booking.physical_location = req.body.physical_location;
-    booking.details = req.body.details;
-    booking.category = req.body.category;
-    booking.contact_number = req.body.contact_number;
-    booking.remaining_room = req.body.remaining_room;
+    const booked = new Booked();
+    booked.hotelID = req.body.hotelID;
+    booked.category = req.body.category;
+    booked.user_name = req.body.user_name;
+    booked.user_ID = req.body.user_ID;
+    booked.user_email = req.body.user_email;
    
-    await booking.save();
-    res.send(booking);
+    await booked.save();
+    res.send(booked);
   });
 
-  router.delete("/deletebooking/:bookingID", async (req, res) => {
-    const booking = await Booking.findByIdAndRemove({
-      _id: req.params.bookingID
+  router.delete("/deletebooked/:bookedID", async (req, res) => {
+    const booked = await Booked.findByIdAndRemove({
+      _id: req.params.bookedID
     });
-    res.send(booking);
+    res.send(booked);
   });
-  router.put("/updatebooking/:bookingID", async (req, res) => {
-    const booking = await Booking.findByIdAndUpdate(
+  router.put("/updatebooked/:bookedID", async (req, res) => {
+    const booked = await Booked.findByIdAndUpdate(
       {
-        _id: req.params.bookingID
+        _id: req.params.bookedID
       },
       req.body,
       {
@@ -82,7 +79,7 @@ router.use((req, res, next) =>{
       }
     );
   
-    res.send(booking);
+    res.send(booked);
   });
   
   module.exports = router;
