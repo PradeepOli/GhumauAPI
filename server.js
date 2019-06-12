@@ -6,8 +6,8 @@ const bodyParser = require("body-parser");
 const morgan = require("morgan");
 
 
-const jwt    = require('jsonwebtoken'),
-config = require('./configurations/config');
+const jwt = require('jsonwebtoken'),
+  config = require('./configurations/config');
 
 //database connection
 require("./mongo");
@@ -15,18 +15,18 @@ require("./mongo");
 //Models or Schema
 require("./model/AllList");
 require("./model/Rating");
-require("./model/Booking");
-require("./model/Booked");
+require("./model/Blog");
+
 
 //Middleware
 app.use(bodyParser.json()).use(morgan());
 
 
 //Routes
-app.use('/api',require("./routes/AllList"));
-app.use('/rating',require("./routes/Rating"));
-app.use('/booking',require("./routes/Booking"));
-app.use('/booked',require("./routes/Booked"));
+app.use('/api', require("./routes/AllList"));
+app.use('/rating', require("./routes/Rating"));
+app.use('/blogapi', require("./routes/Blog"))
+
 
 //set secret
 app.set('Secret', config.secret);
@@ -35,7 +35,9 @@ app.set('Secret', config.secret);
 app.use(morgan('dev'));
 
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 
 // parse application/json
 app.use(bodyParser.json());
@@ -65,6 +67,6 @@ app.use((error, req, res, next) => {
 });
 const port = process.env.PORT || 3001;
 
-app.listen(port, function() {
+app.listen(port, function () {
   console.log(`Server is running on port ${port}`);
 });
