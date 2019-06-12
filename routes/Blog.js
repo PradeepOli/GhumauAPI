@@ -65,7 +65,7 @@ router.get("/:blogId", async (req, res) => {
   const blogs = await Blog.findOne({
     _id: req.params.blogId
   }).populate(
-    "blogContents"
+    "blogContents",
   );
   res.send(blogs);
 });

@@ -16,11 +16,11 @@ const blog_schema = new mongoose.Schema({
 
     likes: {
       type: Number,
-      default: null
+      default: 0
     },
     views: {
       type: Number,
-      default: null
+      default: 0
     },
     related_places_id: [{
       type: String,
