@@ -103,6 +103,7 @@ router.post("/", async (req, res) => {
   blog.related_places_id = req.body.related_places_id;
   blog.comments = req.body.comments;
   blog.blog_content_html = req.body.blog_content_html;
+  
   await blog.save();
   res.send(blog);
 });
@@ -169,6 +170,8 @@ router.post("/:blogId", async (req, res) => {
   const blogContent = new BlogContent();
   blogContent.blogContent = req.body.blogContent;
   blogContent.blog = blog._id;
+  blogContent.authorImageUrl = req.body.authorImageUrl;
+  blogContent.aboutAuthor = req.body.aboutAuthor;
   await blogContent.save();
 
   // Associate Blog with comment
@@ -178,6 +181,26 @@ router.post("/:blogId", async (req, res) => {
   res.send(blogContent);
 });
 
+router.put("/updatecontent/:contentId", async (req, res) => {
+  const content = await BlogContent.findOneAndUpdate({
+      _id: req.params.contentId
+    },
+    req.body, {
+      new: true,
+      runValidators: true
+    }
+  );
+
+  res.send(content);
+
+});
+
+router.delete("/deletecontent/:contentId", async (req, res) => {
+  const content = await BlogContent.findByIdAndRemove({
+    _id: req.params.contentId
+  });
+  res.send(content);
+});
 
 
 module.exports = router;
