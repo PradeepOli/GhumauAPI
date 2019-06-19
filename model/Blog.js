@@ -77,6 +77,14 @@ const blog_content_schema = new mongoose.Schema({
     type: String,
     required: "Blog Content in HTML is Required"
   },
+  authorImageUrl:{
+    type: String,
+    default:""
+  },
+  aboutAuthor:{
+    type: String,
+    default:""
+  },
   blog: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Blog",
