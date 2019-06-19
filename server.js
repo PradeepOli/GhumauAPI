@@ -26,6 +26,7 @@ app.use(bodyParser.json()).use(morgan());
 app.use('/api', require("./routes/AllList"));
 app.use('/rating', require("./routes/Rating"));
 app.use('/blogapi', require("./routes/Blog"))
+app.use('/test', require("./routes/test"))
 
 
 //set secret
