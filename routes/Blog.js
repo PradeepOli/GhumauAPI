@@ -181,6 +181,26 @@ router.post("/:blogId", async (req, res) => {
   res.send(blogContent);
 });
 
+router.put("/updatecontent/:contentId", async (req, res) => {
+  const content = await BlogContent.findOneAndUpdate({
+      _id: req.params.contentId
+    },
+    req.body, {
+      new: true,
+      runValidators: true
+    }
+  );
+
+  res.send(content);
+
+});
+
+router.delete("/deletecontent/:contentId", async (req, res) => {
+  const content = await BlogContent.findByIdAndRemove({
+    _id: req.params.contentId
+  });
+  res.send(content);
+});
 
 
 module.exports = router;
