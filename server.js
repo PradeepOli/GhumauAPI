@@ -16,6 +16,7 @@ require("./mongo");
 require("./model/AllList");
 require("./model/Rating");
 require("./model/Blog");
+require("./model/Discussion")
 
 
 //Middleware
@@ -27,7 +28,7 @@ app.use('/api', require("./routes/AllList"));
 app.use('/rating', require("./routes/Rating"));
 app.use('/blogapi', require("./routes/Blog"))
 app.use('/test', require("./routes/test"))
-
+app.use('/discussionapi', require("./routes/Discussion"))
 
 //set secret
 app.set('Secret', config.secret);
