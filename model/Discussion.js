@@ -1,12 +1,25 @@
 const mongoose = require("mongoose");
 
-//question, upvote, downvote, published_date, best_answer, 
+//question, upvote, downvote, published_date, best_answer, email, photo_url, full_name, 
 //comments=>comment, upvote, downvote, email, photo_url, full_name, 
 const discussion_schema = new mongoose.Schema({
   question: {
     type: String,
     required: "Name is Required"
   },
+  name:{
+    type: String,
+    required: "Name is Required"
+  },
+  email:{
+    type: String,
+    required: "Email is Required"
+  },
+  photo_url:{
+    type: String,
+    required: "Photo URL is Required"
+  },
+  
   upvote: {
     type: Number,
     default: 0
@@ -75,7 +88,7 @@ const comment_discussion_schema = new mongoose.Schema({
   discussion: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Discussion",
-    required: "Discussion is Required Field"
+    // required: "Discussion is Required Field"
   }
 });
 module.exports = mongoose.model("Discussion", discussion_schema);

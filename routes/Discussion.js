@@ -89,6 +89,11 @@ router.post("/", async (req, res) => {
   question.views = req.body.views;
   question.published_date = req.body.published_date;
   question.best_answer = req.body.best_answer;
+  question.email = req.body.email;
+  question.photo_url = req.body.photo_url;
+  question.name = req.body.name;
+
+
   await question.save();
   res.send(question);
 });
