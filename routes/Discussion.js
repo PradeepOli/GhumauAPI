@@ -113,7 +113,7 @@ router.post("/:questionId", async (req, res) => {
   comment.email = req.body.email;
   comment.photo_url = req.body.photo_url;
   comment.full_name = req.body.full_name;
-  comment.question = question._id;
+  comment.discussion = question._id;
   await comment.save();
 
   // Associate Question with comment
