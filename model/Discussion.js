@@ -91,9 +91,9 @@ const comment_discussion_schema = new mongoose.Schema({
     required: "discussion is Required Field"
    // default: "Haha"
   }
-//},
-// {
-//   timestamps: true
+},
+{
+  timestamps: true
 });
 module.exports = mongoose.model("Discussion", discussion_schema);
 module.exports = mongoose.model("CommentDiscussion", comment_discussion_schema);
