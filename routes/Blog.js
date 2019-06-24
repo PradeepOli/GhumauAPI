@@ -102,6 +102,7 @@ router.post("/", async (req, res) => {
   blog.views = req.body.views;
   blog.related_places_id = req.body.related_places_id;
   blog.comments = req.body.comments;
+  blog.short_description = req.body.short_description;
   blog.blog_content_html = req.body.blog_content_html;
   
   await blog.save();
