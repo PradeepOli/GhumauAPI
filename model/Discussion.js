@@ -82,14 +82,18 @@ const comment_discussion_schema = new mongoose.Schema({
   },
   full_name: {
     type: String,
-    default: "Full name is required"
+    required: "Full name is required"
   },
 
   discussion: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Discussion",
-    // required: "Discussion is Required Field"
+    required: "discussion is Required Field"
+   // default: "Haha"
   }
+},
+{
+  timestamps: true
 });
 module.exports = mongoose.model("Discussion", discussion_schema);
 module.exports = mongoose.model("CommentDiscussion", comment_discussion_schema);

@@ -22,6 +22,10 @@ const blog_schema = new mongoose.Schema({
       type: Number,
       default: 0
     },
+    short_description:{
+      type: String,
+      default: ""
+    },
     related_places_id: [{
       type: String,
       default: ""

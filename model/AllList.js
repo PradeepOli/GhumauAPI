@@ -21,7 +21,7 @@ const all_list_schema = new mongoose.Schema({
   }],
   province_no: {
     type: String,
-    default: null
+    default: ""
   },
   rating: {
     type: Number,
@@ -33,11 +33,11 @@ const all_list_schema = new mongoose.Schema({
   },
   views: {
     type: Number,
-    default: null
+    default: 0
   },
   categoriesSpecial: [{
     type: String,
-    default: null
+    default: ""
   }],
   number_of_images: {
     type: Number,
