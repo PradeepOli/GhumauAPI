@@ -117,7 +117,7 @@ router.post("/:questionId", async (req, res) => {
   await comment.save();
 
   // Associate Question with comment
-  question.comments.push(comment._id);
+ // question.comments.push(comment._id);
   await question.save();
 
   res.send(comment);

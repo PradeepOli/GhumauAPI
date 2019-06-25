@@ -127,7 +127,7 @@ router.post("/:placeId", async (req, res) => {
   await description.save();
 
   // Associate Place with description
-  place.descriptions.push(description._id);
+ // place.descriptions.push(description._id);
   await place.save();
 
   res.send(description);

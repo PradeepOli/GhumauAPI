@@ -17,6 +17,7 @@ require("./model/AllList");
 require("./model/Rating");
 require("./model/Blog");
 require("./model/Discussion")
+require("./model/tours")
 
 
 //Middleware
@@ -29,6 +30,7 @@ app.use('/rating', require("./routes/Rating"));
 app.use('/blogapi', require("./routes/Blog"))
 app.use('/test', require("./routes/test"))
 app.use('/discussionapi', require("./routes/Discussion"))
+app.use('/toursapi',require("./routes/tours"))
 
 //set secret
 app.set('Secret', config.secret);

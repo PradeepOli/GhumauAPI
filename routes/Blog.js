@@ -130,7 +130,7 @@ router.post("/comment/:blogId", async (req, res) => {
   await comment.save();
 
   // Associate Blog with comment
-  blog.comments.push(comment._id);
+  //blog.comments.push(comment._id);
   await blog.save();
 
   res.send(comment);
@@ -176,7 +176,7 @@ router.post("/:blogId", async (req, res) => {
   await blogContent.save();
 
   // Associate Blog with comment
-  blog.blogContents.push(blogContent._id);
+  //blog.blogContents.push(blogContent._id);
   await blog.save();
 
   res.send(blogContent);
