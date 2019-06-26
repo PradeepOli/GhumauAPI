@@ -99,12 +99,12 @@ const tours_rating_schema = new mongoose.Schema({
     },
     photoUrl:{
       type: String,
-      default:""
+      default:"Photo URl is required"
     },
     time:{
       type: String,
-      required: "Time is required"
-    },
+      default: "Time is required"
+        },
     tour:{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Tours",
