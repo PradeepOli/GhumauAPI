@@ -126,7 +126,7 @@ router.post("/:tourId", async (req, res) => {
   await description.save();
 
   // Associate Tour with description
- // tour.toursdescriptions.push(description._id);
+  tour.toursdescriptions.push(description._id);
   await tour.save();
 
   res.send(description);
@@ -166,10 +166,12 @@ router.post("/rating/:tourId", async (req, res) => {
   rating.star = req.body.star;
   rating.review = req.body.review;
   rating.tour = tour._id;
+  rating.photoUrl = req.body.photoUrl;
+  rating.time = req.body.time;
   await rating.save();
 
   // Associate Tour with rating
- //tour.toursrating.push(rating._id);
+ tour.toursrating.push(rating._id);
   await tour.save();
 
   res.send(rating);
