@@ -51,6 +51,11 @@ router.get("/sort/:id", async (req, res) => {
   res.send(questions);
 });
 
+router.get("/places_id/:placeId", async(req,res)=>{
+  const questions = await Question.find({places_id:req.params.placeId});
+  res.send(questions);
+});
+
 router.get("/:questionId", async (req, res) => {
   const question = await Question.findOne({ _id: req.params.questionId }).populate(
     "comments"
@@ -92,6 +97,8 @@ router.post("/", async (req, res) => {
   question.email = req.body.email;
   question.photo_url = req.body.photo_url;
   question.name = req.body.name;
+  question.places_id = req.body.places_id;
+  question.tags = req.body.tags;
 
 
   await question.save();

@@ -43,7 +43,7 @@ const discussion_schema = new mongoose.Schema({
   },
   places_id: [{
     type: String,
-    default: ""
+    default:""
   }],
  tags:[{
 type:String,
